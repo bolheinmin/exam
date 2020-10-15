@@ -1,0 +1,35 @@
+1.SELECT name FROM `staffs`
+
+2.SELECT department_id FROM `staffs`
+
+3.SELECT staffs.name as staffname, idno, fathername, salary,joindate, departments.name as depname FROM staffs INNER JOIN departments ON staffs.department_id = departments.id ORDER BY staffname
+
+4.SELECT staffs.name as staffname, departments.name as depname FROM staffs INNER JOIN departments ON staffs.department_id = departments.id ORDER BY staffname ASC, depname DESC
+
+5.SELECT staffs.name as staffname, fathername, salary, joindate, departments.name as depname FROM staffs INNER JOIN departments ON staffs.department_id = departments.id WHERE staffs.name = "Kay Thwe" OR staffs.name = "Thae Su Wai"
+
+6.SELECT * FROM `staffs` INNER JOIN departments ON staffs.department_id = departments.id WHERE departments.name = "Admin"
+
+
+7.SELECT * FROM `staffs` WHERE name LIKE"a%"
+
+8.SELECT * FROM `staffs` WHERE name LIKE"%e"
+
+9.SELECT * FROM `staffs` WHERE salary BETWEEN '100000' AND '500000'
+
+10.SELECT * FROM `staffs` WHERE joindate='2014-02-20'
+
+11.SELECT COUNT(*) FROM staffs INNER JOIN departments ON staffs.department_id = departments.id WHERE departments.name = "Admin"
+
+12.SELECT staffs.name as staffname, idno, fathername, salary,joindate, departments.name as depname FROM staffs INNER JOIN departments ON staffs.department_id = departments.id WHERE departments.name = "Manager" OR departments.name = "Asst. Manager"
+
+13.SELECT name FROM staffs LIMIT 5
+
+14.SELECT salary FROM staffs WHERE staffs.salary>300000 LIMIT 3
+
+15.SELECT SUM(salary) AS salary, departments.name AS depname FROM staffs INNER JOIN departments ON staffs.department_id = departments.id
+
+16.SELECT staffs.name as staffname, idno, fathername, salary,joindate, departments.name as depname, bonusdate FROM staffs INNER JOIN departments ON staffs.department_id = departments.id INNER JOIN bonus ON staffs.id = bonus.staff_id WHERE bonus.bonusdate = "2016-02-20"
+
+17.SELECT staffs.name as staffname, idno, fathername, salary,joindate, departments.name as depname, bonusdate FROM staffs INNER JOIN departments ON staffs.department_id = departments.id INNER JOIN bonus ON staffs.id = bonus.staff_id WHERE bonus.bonusdate = "2016-02-20" AND staffs.name = "Aye Aye"
+ 

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calendar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    * {
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .wrapper {
+        background-color: #dfe6e9;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+    }
+
+    .calendar {
+        margin: auto;
+        width: 800px;
+        background-color: #fff;
+        box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.2);
+        border-radius: 50px;
+
+    }
+
+    .month {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 40px 30px;
+        text-align: center;
+        background-color: #636e72;
+        color: #fff;
+    }
+
+    .weekDays {
+        /*background-color: #2d3436;*/
+        color: #2d3436;
+        padding: 7px 0;
+        display: flex;
+    }
+
+    .days {
+        font-weight: 300;
+        padding: 10px 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .weekDays div,
+    .days div {
+        text-align: center;
+        width: 14.28%;
+    }
+
+    .days div {
+        padding: 20px 0;
+        margin-bottom: 10px;
+        transition: all 0.4s;
+        border-radius: 100px;
+    }
+
+    .prev_date {
+        color: #999;
+    }
+
+    .today {
+        background-color: #2d3436;
+        color: #fff;
+        border-radius: 100px;
+    }
+
+    .days div:hover {
+        cursor: pointer;
+        background-color: #b2bec3;
+    }
+
+    #month {
+        font-size: 30px;
+        font-weight: 500;
+    }
+    </style>
+</head>
+
+<body onload="myCalendar()">
+    <div class="wrapper">
+        <div class="calendar">
+            <div class="month">
+                <div>
+                    <h2 id="month"></h2>
+                    <p id="date"></p>
+                </div>
+            </div>
+            <div class="weekDays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="days">
+            </div>
+        </div>
+    </div>
+    <script>
+        
+    var date = new Date();
+
+    function myCalendar() {
+        date.setDate(1);
+        var day = date.getDay();
+        var today = new Date();
+        var endDate = new Date(
+            date.getFullYear(),
+            date.getMonth() + 1,
+            0
+        ).getDate();
+
+        var prevDate = new Date(
+            date.getFullYear(),
+            date.getMonth(),
+            0
+        ).getDate();
+
+        const months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        ]
+
+        document.getElementById("month").innerHTML = months[date.getMonth()];
+        document.getElementById("date").innerHTML = date.toDateString();
+        var cells = "";
+        for (x = day; x > 0; x--) {
+            cells += "<div class='prev_date'>" + (prevDate - x + 1) + "</div>";
+        }
+
+        for (i = 1; i <= endDate; i++) {
+            if (i == today.getDate() && date.getMonth() == today.getMonth()) cells += "<div class='today'>" + i + "</div>";
+            else
+                cells += "<div>" + i + "</div>";
+        }
+        document.getElementsByClassName("days")[0].innerHTML = cells;
+
+    }
+    </script>
+</body>
+
+</html>
